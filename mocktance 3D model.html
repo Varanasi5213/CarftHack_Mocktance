@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body { margin: 0; }
+	</style>
+	<title>Document</title>
+</head>
+<body>
+	<script>src="js/controls/OrbitControls.js"</script>
+	<script src="js/three.js"></script>
+		<script>
+
+			var scene, camera, renderer, box, camcontrols;
+
+			function init(){
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0xaaaaaa );
+				
+				
+
+				const geometry = new THREE.BoxGeometry(10000, 5000,200);
+				const material = new THREE.MeshLambertMaterial({color:new THREE.Color('skyblue')})
+
+				box = new THREE.Mesh(geometry, material);
+				box.position.set(0,0,0)
+				scene.add(box);
+
+				const geometry1 = new THREE.BoxGeometry(9900, 5000,20);
+				const material1 = new THREE.MeshLambertMaterial({color:new THREE.Color('pink')})
+
+				box1 = new THREE.Mesh(geometry1, material1);
+				box1.position.set(0,0,250)
+				scene.add(box1);
+				
+				const loader = new THREE.FontLoader();
+
+				geometry3 = loader.load( 'js/helvetiker_regular.typeface.json', function ( font ) {
+
+				const geometry2 = new THREE.TextGeometry( 'Welcome to Mocktance', {
+					font: font,
+					size: 150,
+					height: 100,
+					curveSegments: 12,
+					bevelEnabled: true,
+					bevelThickness: 10,
+					bevelSize: 8,
+					bevelOffset: 0,
+					bevelSegments: 5
+					
+				} );
+
+				const text = new THREE.Mesh(geometry2, new THREE.MeshLambertMaterial({color:'red'}));
+				text.position.set(2500, -2500, 300)
+				scene.add(text);
+
+
+				} );
+
+				const geo3 = new THREE.BoxGeometry(500, 3000, 15);
+				const mat3 = new THREE.MeshLambertMaterial({color: new THREE.Color('green')});
+				
+				road1 = new THREE.Mesh(geo3, mat3);
+				road1.position.set(-4000, 0, 290);
+				scene.add(road1);
+
+				const geo4 = new THREE.BoxGeometry(8500, 500, 15);
+				
+				road2 = new THREE.Mesh(geo4, mat3);
+				road2.position.set( 0, 1500, 290);
+				scene.add(road2);
+				
+				const geo5 = new THREE.BoxGeometry(500, 4000, 15);
+
+				
+				road3 = new THREE.Mesh(geo5, mat3);
+				road3.position.set(4000, 0, 290);
+				scene.add(road3);
+
+				const geo6 = new THREE.BoxGeometry(4000, 500, 15);
+				
+				road4 = new THREE.Mesh(geo6, mat3);
+				road4.position.set( -2250, -1500, 290);
+				scene.add(road4);
+
+				
+
+				matb1 = new THREE.MeshLambertMaterial({color: new THREE.Color('violet')})
+				geob1 = new THREE.BoxGeometry(500, 500 , 2000);
+
+				const b1 = new THREE.Mesh(geob1, matb1);
+				b1.position.set(-550,-950, 290);
+				scene.add(b1);
+
+
+				matb2 = new THREE.MeshLambertMaterial({color: new THREE.Color('orange')})
+				geob2 = new THREE.BoxGeometry(500, 500 , 1600);
+
+				const b2 = new THREE.Mesh(geob2, matb2);
+				b2.position.set(-1100,-950, 290);
+				scene.add(b2);
+
+				matb3 = new THREE.MeshLambertMaterial({color: new THREE.Color('dark blue')})
+				geob3 = new THREE.BoxGeometry(500, 500 , 700);
+
+				const b3 = new THREE.Mesh(geob3, matb3);
+				b3.position.set(-1650,-950, 290);
+				scene.add(b3);
+
+				matb4 = new THREE.MeshLambertMaterial({color: new THREE.Color('blue')})
+				geob4 = new THREE.BoxGeometry(500, 500 , 2500);
+
+				const b4 = new THREE.Mesh(geob4, matb4);
+				b4.position.set(-2200,-950, 790);
+				scene.add(b4);
+
+				matp1 = new THREE.MeshLambertMaterial({color: new THREE.Color('white')})
+				geop1 = new THREE.BoxGeometry(1500, 50 , 1500);
+
+				const p1 = new THREE.Mesh(geop1, matp1);
+				p1.rotation.z += 3.14/3;
+				p1.position.set(1600,-1000, 500);
+				scene.add(p1);
+
+				geop2 = new THREE.BoxGeometry(1500, 50 , 1500);
+
+				const p2 = new THREE.Mesh(geop2, matp1);
+				p2.rotation.z += 3.14/14;
+				p2.position.set(2400,-100, 500);
+				scene.add(p2);
+
+		
+
+				const light = new THREE.DirectionalLight();
+				light.position.set(0, -5000, 8000);
+				scene.add(light)
+
+				camera = new THREE.PerspectiveCamera( 90,  window.innerWidth / window.innerHeight, 0.1, 100000);
+				
+				camera.position.set( 5000, -3000, 3000);
+            	camera.lookAt( 0,0,0 );
+				//camera.rotation.set( 0,3.14/4,3.14/4);
+				
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				window.addEventListener('resize', onResize, false);
+
+				
+				
+				update();
+			}
+
+			function update(){
+				requestAnimationFrame(update);
+				
+				renderer.render(scene, camera);
+			}
+
+			function onResize(){
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize(window.innerWidth, window.innerHeight);
+			}
+
+			init();
+		</script>
+</body>
+</html>
