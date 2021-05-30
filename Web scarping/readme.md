@@ -12,6 +12,3 @@
 6.VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media
 7.The prdictions of VADER has been added to the original feature set and the date have been sorted.
 8.The final result is stored in _NVIDIA_sent1.csv_ file.
-
-**Note**
->Even though Stratified sampling gave better results Random sampling also has given similar results. But comparing computational costs will be less for Stratified since it is a semi-random method.
