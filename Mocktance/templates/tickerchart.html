@@ -1,0 +1,66 @@
+{% extends 'ticker.html' %}
+
+<script>
+{% block jquery %}
+var endpoint = '/api/chart/datas/'
+var close = []
+var open = []
+var low = []
+var high = []
+var labels = []
+$.ajax({
+    url: endpoint,
+    method: "GET",
+    success: function (data) {
+	     
+	      labels = data.labels
+		  close = data.close
+		  open = data.open
+		  low = data.low
+		  high = data.high
+		  console.log(high)
+	      var ctx = document.getElementById('myChart').getContext('2d');
+		  var myChart = new Chart(ctx, {
+			    data: {
+			        	labels: labels,
+			        	datasets: [{
+            			type: 'line',
+            			label: 'close',
+            			data: close
+    					}, 	{
+            			type: 'line',
+                   		label: 'open',
+			            data: open,
+					},{
+            			type: 'line',
+                   		label: 'low',
+			            data: low,
+					},{
+            			type: 'line',
+                   		label: 'high',
+			            data: high,
+					}]
+				}
+			})
+    },
+    error: function (error_data) {
+      console.debug("error"); 
+      console.debug(error_data);
+    }
+  });
+
+
+
+
+{% endblock %}
+</script>
+
+{% block content %}
+
+<div class='row'>
+    <div class='col-sm-12'>
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+</div>
+
+{% endblock content %}
