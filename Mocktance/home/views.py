@@ -1,9 +1,10 @@
+
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .forms import TickerForm
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 import yfinance as yf
@@ -14,7 +15,7 @@ import pandas as pd
 class HomeView(View):
     def get(self, request, *args, **kwargs):
 
-        return render(request,'charts.html')
+        return render(request,'index1.html')
 
 
 def ticker(request,*args, **kwargs):
@@ -22,6 +23,8 @@ def ticker(request,*args, **kwargs):
         request.session['tickerid'] = ''
         if request.method == 'POST':
             ticker = request.POST['ticker']
+            ticker = ticker.upper()
+              
             context={}
             request.session['ticker']=ticker
             

@@ -26,19 +26,28 @@ $.ajax({
 			        	datasets: [{
             			type: 'line',
             			label: 'close',
-            			data: close
+            			data: close,
+                  backgroundColor: 'rgb(54, 162, 235)',
+                  borderColor: 'rgb(54, 162, 235)' 
     					}, 	{
             			type: 'line',
                    		label: 'open',
 			            data: open,
+                  borderColor: 'red',
+                  backgroundColor: 'red'
 					},{
             			type: 'line',
                    		label: 'low',
 			            data: low,
-					},{
+                  borderColor: 'green',
+                  backgroundColor: 'green'
+					
+          },{
             			type: 'line',
                    		label: 'high',
 			            data: high,
+                  borderColor: 'black',
+                  backgroundColor: 'black'
 					}]
 				}
 			})
@@ -59,8 +68,9 @@ $.ajax({
 
 <div class='row'>
     <div class='col-sm-12'>
-        <canvas id="myChart" width="400" height="400"></canvas>
+        <canvas id="myChart" width="400" height="200"></canvas>
     </div>
+
 </div>
 
 {% endblock content %}
