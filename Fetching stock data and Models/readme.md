@@ -1,4 +1,4 @@
-## Web Scarping
+## Predictive Model
 
 **Descreption**
 > The idea is to add stock values according to the date of NVIDIA and make predictions.
