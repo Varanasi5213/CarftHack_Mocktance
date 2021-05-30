@@ -43,3 +43,9 @@
 >   1. To make our model more user interacting adding the model to a website would help.
 
 >   2. The website can be of interactive plots and links guiding the user about investment and started guide for the same.
+
+
+## Future Work
+>  1.  Here we have used a static company name. The ideal solution would be using knowledge graphs to determine the company name from the post and generalizing the idea provided above.
+
+>  2. The website can be made more responsive.
